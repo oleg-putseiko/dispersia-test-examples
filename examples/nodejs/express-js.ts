@@ -6,7 +6,7 @@ const app = express();
 const client = new DispersiaClient(process.env.DISPERSIA_API_KEY);
 
 app.use(express.json());
-app.post('/', async (req: Request, res: Response) => {
+app.post('/send', async (req: Request, res: Response) => {
   const { data, error } = await client.messages.send({
     templateId: 'tg_XXXXXXXXX',
     data: {

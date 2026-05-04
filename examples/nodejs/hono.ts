@@ -5,7 +5,7 @@ const app = new Hono();
 
 const client = new DispersiaClient(process.env.DISPERSIA_API_KEY);
 
-app.post('/', async (c) => {
+app.post('/send', async (c) => {
   const { data, error } = await client.messages.send({
     templateId: 'tg_XXXXXXXXX',
     data: {

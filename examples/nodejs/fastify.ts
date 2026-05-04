@@ -5,7 +5,7 @@ const app = Fastify({ logger: true });
 
 const client = new DispersiaClient(process.env.DISPERSIA_API_KEY);
 
-app.post('/notify', async (request, reply) => {
+app.post('/send', async (request, reply) => {
   const { data, error } = await client.messages.send({
     templateId: 'tg_XXXXXXXXX',
     data: {
