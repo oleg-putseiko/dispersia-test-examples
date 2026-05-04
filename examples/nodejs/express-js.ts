@@ -1,13 +1,13 @@
-import { DispersiaClient } from 'dispersia';
+import { Dispersia } from 'dispersia';
 import express, { type Request, type Response } from 'express';
 
 const app = express();
 
-const client = new DispersiaClient(process.env.DISPERSIA_API_KEY);
+const dispersia = new Dispersia(process.env.DISPERSIA_API_KEY);
 
 app.use(express.json());
 app.post('/send', async (req: Request, res: Response) => {
-  const { data, error } = await client.messages.send({
+  const { data, error } = await dispersia.messages.send({
     templateId: 'tg_XXXXXXXXX',
     data: {
       name: 'Jane Doe',

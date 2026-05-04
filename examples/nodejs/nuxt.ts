@@ -1,10 +1,10 @@
-import { DispersiaClient } from 'dispersia';
+import { Dispersia } from 'dispersia';
 
 const config = useRuntimeConfig();
-const client = new DispersiaClient(config.dispersiaApiKey);
+const dispersia = new Dispersia(config.dispersiaApiKey);
 
 export default defineEventHandler(async () => {
-  const { data, error } = await client.messages.send({
+  const { data, error } = await dispersia.messages.send({
     templateId: 'tg_XXXXXXXXX',
     data: {
       name: 'Jane Doe',

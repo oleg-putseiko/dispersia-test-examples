@@ -1,12 +1,12 @@
 import Fastify from 'fastify';
-import { DispersiaClient } from 'dispersia';
+import { Dispersia } from 'dispersia';
 
 const app = Fastify({ logger: true });
 
-const client = new DispersiaClient(process.env.DISPERSIA_API_KEY);
+const dispersia = new Dispersia(process.env.DISPERSIA_API_KEY);
 
 app.post('/send', async (request, reply) => {
-  const { data, error } = await client.messages.send({
+  const { data, error } = await dispersia.messages.send({
     templateId: 'tg_XXXXXXXXX',
     data: {
       name: 'Jane Doe',

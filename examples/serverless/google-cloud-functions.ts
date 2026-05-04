@@ -1,9 +1,9 @@
-const { DispersiaClient } = require('dispersia');
+const { Dispersia } = require('dispersia');
 
-const client = new DispersiaClient(process.env.DISPERSIA_API_KEY);
+const dispersia = new Dispersia(process.env.DISPERSIA_API_KEY);
 
 exports.send = async (req, res) => {
-  const { data, error } = await client.messages.send({
+  const { data, error } = await dispersia.messages.send({
     templateId: 'tg_XXXXXXXXX',
     data: {
       name: 'Jane Doe',

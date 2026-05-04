@@ -1,9 +1,9 @@
-import { DispersiaClient } from 'npm:dispersia';
+import { Dispersia } from 'npm:dispersia';
 
-const client = new DispersiaClient(Deno.env.get('DISPERSIA_API_KEY'));
+const dispersia = new Dispersia(Deno.env.get('DISPERSIA_API_KEY'));
 
 Deno.serve(async () => {
-  const { data, error } = await client.messages.send({
+  const { data, error } = await dispersia.messages.send({
     templateId: 'tg_XXXXXXXXX',
     data: {
       name: 'Jane Doe',
