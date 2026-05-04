@@ -3,15 +3,10 @@ import { DispersiaClient } from 'dispersia';
 const client = new DispersiaClient(process.env.DISPERSIA_API_KEY);
 
 const { data, error } = await client.messages.send({
-  key: 'tg_XXXXXXXXX',
+  templateId: 'tg_XXXXXXXXX',
   data: {
-    product: 'T-Shirt',
-    variant: 'Size XL',
-    user: {
-      name: 'Jane Doe',
-    },
+    name: 'Jane Doe',
   },
-  labels: ['commerce', 'cloth', 'purchase'],
 });
 
 if (error) {

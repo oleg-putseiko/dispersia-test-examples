@@ -8,15 +8,10 @@ const client = new DispersiaClient(process.env.DISPERSIA_API_KEY);
 app.use(express.json());
 app.post('/', async (req: Request, res: Response) => {
   const { data, error } = await client.messages.send({
-    key: 'tg_XXXXXXXXX',
+    templateId: 'tg_XXXXXXXXX',
     data: {
-      product: 'T-Shirt',
-      variant: 'Size XL',
-      user: {
-        name: 'Jane Doe',
-      },
+      name: 'Jane Doe',
     },
-    labels: ['commerce', 'cloth', 'purchase'],
   });
 
   if (error) return res.status(error.status).json(error);

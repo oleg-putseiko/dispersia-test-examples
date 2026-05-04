@@ -8,23 +8,13 @@ export const server = {
     accept: 'json',
     handler: async () => {
       const { data, error } = await client.messages.send({
-        key: 'tg_XXXXXXXXX',
+        templateId: 'tg_XXXXXXXXX',
         data: {
-          product: 'T-Shirt',
-          variant: 'Size XL',
-          user: {
-            name: 'Jane Doe',
-          },
+          name: 'Jane Doe',
         },
-        labels: ['commerce', 'cloth', 'purchase'],
       });
 
-      if (error) {
-        throw new ActionError({
-          code: 'BAD_REQUEST',
-          message: error.message,
-        });
-      }
+      if (error) throw new ActionError(error);
 
       return data;
     },

@@ -2,14 +2,9 @@ wget -q -O - --method POST \
   --header 'Authorization: Bearer sk_live_XXXXXXXXX' \
   --header 'Content-Type: application/json' \
   --body-data '{
-    "key": "tg_XXXXXXXXX",
+    "template_id": "tg_XXXXXXXXX",
     "data": {
-      "product": "T-Shirt",
-      "variant": "Size XL",
-      "user": {
-        "name": "Jane Doe"
-      }
-    },
-    "labels": ["commerce", "cloth", "purchase"]
+      "name": "Jane Doe"
+    }
   }' \
   'https://api.dispersia.io/messages'

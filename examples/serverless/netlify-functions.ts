@@ -1,9 +1,8 @@
-import { json } from '@remix-run/node';
 import { DispersiaClient } from 'dispersia';
 
 const client = new DispersiaClient(process.env.DISPERSIA_API_KEY);
 
-export async function action() {
+export default async function send() {
   const { data, error } = await client.messages.send({
     templateId: 'tg_XXXXXXXXX',
     data: {
@@ -11,5 +10,7 @@ export async function action() {
     },
   });
 
-  return json({ data, error });
+  return Response.json(data ?? error, {
+    headers: { 'Content-Type': 'application/json' },
+  });
 }

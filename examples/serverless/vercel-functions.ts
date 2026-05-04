@@ -6,15 +6,10 @@ export async function POST() {
       Authorization: `Bearer ${process.env.DISPERSIA_API_KEY}`,
     },
     body: JSON.stringify({
-      key: 'tg_XXXXXXXXX',
+      templateId: 'tg_XXXXXXXXX',
       data: {
-        product: 'T-Shirt',
-        variant: 'Size XL',
-        user: {
-          name: 'Jane Doe',
-        },
+        name: 'Jane Doe',
       },
-      labels: ['commerce', 'cloth', 'purchase'],
     }),
   });
 

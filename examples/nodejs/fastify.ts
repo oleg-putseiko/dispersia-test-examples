@@ -1,9 +1,11 @@
-import { json } from '@remix-run/node';
+import Fastify from 'fastify';
 import { DispersiaClient } from 'dispersia';
+
+const app = Fastify({ logger: true });
 
 const client = new DispersiaClient(process.env.DISPERSIA_API_KEY);
 
-export async function action() {
+app.post('/notify', async (request, reply) => {
   const { data, error } = await client.messages.send({
     templateId: 'tg_XXXXXXXXX',
     data: {
@@ -11,5 +13,7 @@ export async function action() {
     },
   });
 
-  return json({ data, error });
-}
+  if (error) return reply.status(error.status).send(error);
+
+  return reply.send(data);
+});
